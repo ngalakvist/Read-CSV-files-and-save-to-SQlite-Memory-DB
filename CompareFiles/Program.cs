@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CompareFiles
+namespace CompareFiles.DB
 {
-  class Program
+  partial class Program
   {
     static void Main(string[] args)
     {
+     DB.CompareFiles.getFilesCompares(@"C:\\Temp\\csv\\today.csv");
+      //CompareFiles.createSqlLiteDB();
+      Console.WriteLine("Done");
+      Console.ReadKey();
     }
   }
 }

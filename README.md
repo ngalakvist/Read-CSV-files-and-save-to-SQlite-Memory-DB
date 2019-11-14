@@ -8,4 +8,4 @@ Get the SQlite Gui here https://sqlitebrowser.org/
 Load the .sqlite file to the GUI for SQLite DB
 
 
- Use this at your own risk. No checks have been done and this is still a work in progress nd has no real structure
+ Use this at your own risk. No checks have been done and this is still a work in progress and has no real code structure yet

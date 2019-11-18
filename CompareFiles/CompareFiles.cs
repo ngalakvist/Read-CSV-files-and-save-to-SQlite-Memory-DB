@@ -1,10 +1,10 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
-using CsvHelper;
 
 namespace CompareFiles.DB
 {
@@ -19,7 +19,20 @@ namespace CompareFiles.DB
       using (var csv = new CsvReader(reader))
       {
         csv.Configuration.Delimiter = ",";
+        csv.Configuration.HasHeaderRecord = false;
+        csv.Configuration.MissingFieldFound = null;
         list = csv.GetRecords<TelefonEvent>().ToList();
+      }
+
+      foreach (var p in list)
+      {
+        p.GetHash();
+      }
+
+      using (var writer = new StreamWriter(@"C:\\Temp\\csv\\mine.csv"))
+      using (var csv = new CsvWriter(writer))
+      {
+        csv.WriteRecords(list);
       }
       using (var db = new CsvDBContext())
       {
